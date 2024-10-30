@@ -1,14 +1,14 @@
 // 
-const { produto } = require("./produtos");
+const { Produto } = require("./produtos");
 
-class pedido {
+class Pedido {
     #produtos
 
     constructor() {
         this.#produtos = [];
         Object.freeze(this)
     }
-    adicionarProduto(novoProduto) {
+    adicionarProdutos(novoProduto) {
 
         if (novoProduto instanceof Produto) {
             this.#produtos.push(novoProduto)
@@ -21,6 +21,12 @@ class pedido {
 
     mostrarPedido(){
         console.log ("Resumo de Pedido:")
+        this.#produtos.forEach(produto => {
+            console.log ( produto.getInfoProduto());
+        })
+
     }
 }
 
+
+ module.exports = { Pedido};

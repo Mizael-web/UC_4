@@ -7,31 +7,31 @@
 
 
 class Produto {
-   #Nome;
-   #Preco;
+   #nome;
+   #preco;
 
 
-constructor (Nome, preco){
-    this.#Nome = nome;
-    this.#Preco  =  preco;
+constructor (nome, preco){
+    this.#nome = nome;
+    this.#preco  =  preco;
     
 }get getNome(){
-   return this.#Nome;
+   return this.#nome;
 }  
 set setNome (nome) {
- this.#Nome=nome;
+ this.#nome=nome;
    
 }
 get getPreco(){
-   return this.#Preco;
+   return this.#preco;
 }
 
 set setPreco (preco) {
-    this.#Preco=preco;
+    this.#preco=preco;
    
 }
  getInfoProduto () {
-    return ` $(this.#nome) -R$ $(this.#preco)`;
+    return ` ${this.#nome} -R$ ${this.#preco}`;
 
  }
  
