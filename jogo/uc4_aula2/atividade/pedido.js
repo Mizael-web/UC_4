@@ -1,7 +1,7 @@
 // 
-const { Produto } = require("./produtos");
+const { Produto } = require("./produtos");// paso 1
 
-class Pedido {
+class Pedido {   // passo 2
     #produtos
 
     constructor() {
@@ -14,19 +14,23 @@ class Pedido {
             this.#produtos.push(novoProduto)
 
         } else {
-            console.log(`somete objetios do tipo Produto podem ser acicionados!`)
+            console.log(`somente objetos do tipo Produto podem ser adicionados!`)
 
         }
     }
 
-    mostrarPedido(){
-        console.log ("Resumo de Pedido:")
+    mostrarPedido() {
+        console.log("Resumo de Pedido:")
         this.#produtos.forEach(produto => {
-            console.log ( produto.getInfoProduto());
+            console.log(produto.getInfoProduto());
         })
+        console.log(`Total = ${this.calcularTotal()}`)
+    }
+    calcularTotal() {
+        return this.#produtos.reduce((total, produto) => total + produto.getPreco, 0);
 
     }
 }
 
 
- module.exports = { Pedido};
+module.exports = { Pedido };

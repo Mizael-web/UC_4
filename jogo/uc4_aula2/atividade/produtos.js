@@ -10,6 +10,7 @@ class Produto {
    #nome;
    #preco;
 
+   
 
 constructor (nome, preco){
     this.#nome = nome;
