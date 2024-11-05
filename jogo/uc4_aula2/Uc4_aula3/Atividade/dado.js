@@ -2,26 +2,25 @@ class Dado{
 
     #face;
 
-
+   
     constructor(){
-        this.#face;
+        this.#face = Math.floor(Math.random () *6+1);
+        Object.freeze(this);
     }
-    getface(){
+
+
+
+    get getFace(){
         return this.#face;
     }
 
-    setFace(){
-        this.#face;
-    }
-
-    exibirDados(){
-        console.log(
-            `
-            Dados Jogo
-            face: ${this.face}
-            
-         `
-        )
+    set setFace(Face){
+        this.#face= face;
     }
 }
 
+module.exports = {Dado}
+
+// let dado01 = new Dado ();
+
+// console.log (dado01.getFace);

@@ -1,39 +1,39 @@
 
 class Jogador {     
-    Nome;
-    Aposta;
+   #Nome;
+   #Aposta;
     
 
     constructor (Nome, Aposta){
-        this.Nome = Nome;
-        this.Aposta  = Aposta;
+        this.#Nome = Nome;
+        this.#Aposta  = Aposta;
+        Object.freeze (this);
         
     }
-    getNome(){
-       return this.Nome;
+    get getNome(){
+       return this.#Nome;
     }  
-    getAposta(){
-       return this.Aposta;
+    get getAposta(){
+       return this.#Aposta;
     }  
 
-    setNome(Nome){
-        this.Nome = Nome;
+    set setNome(Nome){
+        this.#Nome = Nome;
     }
     
-    setNome(Aposta){
-        this.Aposta = Aposta;
+    set setNome(Aposta){
+        this.#Aposta = Aposta;
     }
 
-     
-      exibirDados(){
-        console.log (
-          `
-            Dados Jogador
-            Nome: ${this.Nome}
-            Aposta: ${this.Aposta}
-            
-         `
-        )
-      }
+        apresentarDados(){
+          console.log (`Nome do Jogador: ${this.getNome}, Aposta: ${this.getAposta}`);
+        }
     }
+
+       
+    module.exports = { Jogador}
+    // let jogador01 = new Jogador ("Jorel", 4);
+    // //console.log ( jogador01.getNome);
+    // jogador01.apresentarDados();
+
     
