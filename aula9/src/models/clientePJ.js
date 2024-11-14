@@ -6,7 +6,7 @@ class ClientePJ extends Cliente {
     
     constructor(nome, dataNascimento, telefone, email, cnpj) {
         super(nome, dataNascimento, telefone, email);
-        this.#cnpj = cnpj;
+        this.#CNPJ = cnpj;
         
     }
 
@@ -22,4 +22,4 @@ class ClientePJ extends Cliente {
     }
    
 
-module.exports = {  ClientePJ };
+module.exports = { ClientePJ };

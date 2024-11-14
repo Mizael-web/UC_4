@@ -4,14 +4,15 @@
 const { databaseNotebook } = require("../config/databaseNotebook");
 const { Notebook } = require("../models/notebook");
 
-class controllerNotebbok {
-    adicionarNotebook(numeroDeSerie,  marca, modelo, cor, preco) {
+class controllerNotebook {
+    adicionarNotebookerror(numeroDeSerie, marca, modelo, cor, preco) {
         try {
-            const novoNotebook = new Notebook (numeroDeSerie,  marca, modelo, cor, preco);
+            const novoNotebook = new Notebook(numeroDeSerie, marca, modelo, cor, preco);
             databaseNotebook.push(novoNotebook);
-            console.log ( "notebook adicionado com Sucesso!");
+
+            console.log("notebook adicionado com Sucesso!");
             return novoNotebook
-          
+
         } catch (error) {
             console.error("Erro ao criar Notebook:", error.message);
         }
@@ -20,66 +21,82 @@ class controllerNotebbok {
     listarNotebook() {
         try {
             const dadosNotebook = databaseNotebook.map(notebook => ({
-                numeroDeSerie: notebook.getNumerodeSerie,
+                numeroDeSerie: notebook.getNumeroDeSerie,
                 marca: notebook.marca,
                 modelo: notebook.modelo,
                 cor: notebook.cor,
                 preco: notebook.getPreco,
             }));
-            console.table(Notebook);
+            console.table(dadosNotebook);
         } catch (error) {
             console.error("Erro ao listar Notebook:", error.message);
-
-    editarNotebook(numeroDeSerie, novoMarca, novoModelo, novaCor, novoPreco) {
+        }
+    }
+    buscarNotebook(numeroDeSerie) {
         try {
-            const notebook = notebbok.find(novoNotebook => notebook.getNumerodeSerie === getNumerodeSerie);
+            const notebook = databaseNotebook.find(n => n.getNumeroDeSerie === numeroDeSerie);
+            if (!notebook) {
+                {
+                    console.log("Notebook não encontrado.", numeroDeSerie);
+                    return;
+                }         
+                
+            }
+            console.log("Notebook encontrado: ");
+                console.table([notebook]);
+                return notebook;
+        } catch (error) {
+            console.error(" Erro nao adicionar notebook", error.message);
+
+        }
+
+    }
+
+
+    editarNotebook(numeroDeSerie, novaMarca, novoModelo, novaCor, novoPreco) {
+        try {
+            const notebook = this.buscarNotebook(numeroDeSerie);
             if (notebook) {
                 notebook.marca = novaMarca || notebook.marca;
-                notebook.modelo = novomodelo || notebook.modelo;
-                notebook.cor = novoCor || Notebbok.cor;
-                notebook.preco = novoPreco ||  notebook.preco
-            } else {
-                console.log("Notebook não encontrado!");
+                notebook.modelo = novoModelo || notebook.modelo;
+                notebook.cor = novaCor || notebook.cor;
+                notebook.setPreco = novoPreco || notebook.preco
+                return notebook;
             }
         } catch (error) {
             console.error("Erro ao editar aluno:", error.message);
         }
     }
 
-
-    // const controllerNotebbok = new controllerNotebbok
-
-    // controllerNotebboks.adicionarNotebook("12345","HP", "Gamer", "verde", "12000");
-    // controllerNotebbok()
-
-
     excluirNotebbok(numeroDeSerie) {
         try {
-            const index = notebook.findIndex(notebook => notebook.getNumerodeSerie === numeroDeSerie);
-            if (index !== -1) {
-                const notbookRemovido = notebook.splice(index, 1);
-                return notebookRemovido;
-            } else {
-                console.log("Notebook não encontrado!");
-            }
-        } catch (error) {
-            console.error("Erro ao excluir notebook:", error.message);
-        }
-   
-        excluirTodosNotebooks() {
-            try {
-                const index = alunos.findIndex(aluno => aluno.getMatricula === matricula);
-                if (index !== -1) {
-                    const alunoRemovido = alunos.splice(index, 1);
-                    return alunoRemovido;
-                } else {
-                    console.log("Aluno não encontrado!");
-                }
-            } catch (error) {
-                console.error("Erro ao excluir aluno:", error.message);
-            }
+            const notebook = this.buscarNotebook(numeroDeSerie);
+            if (notebook) { // vai no buscar se existe notebook,  vai verificar o indice
+                const index = databaseNotebook.findIndex(n => n.getNumeroDeSerie === numeroDeSerie);
+                const notebookRemovido = notebook.splice(index, 1);
+                return notebookRemovido
 
+            }
+            console.log("Todos os notebooks removidos com sucesso!")
+
+        } catch (error) {
+            console.error("Erro ao remover os Notebooks:", error.message);
+        }
+    }
+
+    excluirTodosNotebooks() {
+        try {
+            
+            if (databaseNotebook.length > 0) {
+                databaseNotebook.lenght = 0 ; // length exl[cluir todos]
+        
+            }                        
+           
+    console.log("Todos os notebooks removidos com sucesso!");
+
+    } catch(error) {
+        console.error("Erro ao remover os Notebooks:", error.message);
     }
 }
-
-module.exports = { NotebookController };
+}
+        module.exports = { controllerNotebook };

@@ -4,8 +4,8 @@ class Notebook {
     #preco
 
     
-    constructor(  numeroDeErie, marca, modleo, cor, preco) {
-       this.#numeroDeSerie = this.#numeroDeSerie;
+    constructor(  numeroDeSerie, marca, modelo, cor, preco) {
+       this.#numeroDeSerie = numeroDeSerie;
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor
@@ -17,20 +17,16 @@ class Notebook {
         return this.#numeroDeSerie;
     }
 
-    set setNumeroDeSerie(NjmerodeSerie) {
-        this.#numeroDeSerie = numeroDeSerie;
+    set setNumeroDeSerie(novoNumerodeSerie) {
+        this.#numeroDeSerie = novoNumerodeSerie;
     }
 
     get getPreco() {
         return this.#preco;
     }
-    set setPreco(preco) {
-        this.#preco = preco;
+    set setPreco(novoPreco) {
+        this.#preco = novoPreco;
     }
-
-    // getInfo() {
-    //     console.log
-    //         (`Ano: ${this.getAno}, Marca: ${this.getMarca} `);
   
 }
 
