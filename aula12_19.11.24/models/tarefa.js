@@ -5,8 +5,8 @@ class Tarefa{
     
 
     constructor( descricao, status) {
-        this.#descricao = this.#descricao;
-        this.#status= this.#status = " Status não finalizado";
+        this.#descricao = descricao;
+        this.#status= status = " Status não finalizado";
         Object.freeze(this);        
                     
     }
